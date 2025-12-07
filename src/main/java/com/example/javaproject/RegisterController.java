@@ -3,20 +3,20 @@ package com.example.javaproject;
 import javafx.event.ActionEvent;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
-import javafx.scene.control.PasswordField;
+import javafx.stage.StageStyle;
 import org.mindrot.jbcrypt.BCrypt;
-
+import javafx.scene.Node;
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.util.ResourceBundle;
-
 
 public class RegisterController {
     @FXML
@@ -37,6 +37,8 @@ public class RegisterController {
     private TextField usernameTextField;
     @FXML
     private TextField emailTextField;
+    @FXML
+    private Hyperlink connectezCompte;
 
     public void closeButtonOnAction(ActionEvent event) {
         Stage stage = (Stage) closeButton.getScene().getWindow();
@@ -50,6 +52,25 @@ public class RegisterController {
             confirmPasswordLabel.setText("You are set");
         }else {
             confirmPasswordLabel.setText("Passwords does not match");
+        }
+    }
+
+    public void redirectToLogin(ActionEvent event){
+        try {
+            // Fermer la fenêtre d'inscription actuelle
+            Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            currentStage.close();
+            // Charger la page de connexion (login.fxml)
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 600, 438);
+            // Créer une nouvelle fenêtre pour le login
+            Stage loginStage = new Stage();
+            loginStage.initStyle(StageStyle.UNDECORATED);
+            loginStage.setScene(scene);
+            loginStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+            e.getCause();
         }
     }
 
@@ -81,6 +102,7 @@ public class RegisterController {
 
 
     }
+
 }
 
 

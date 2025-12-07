@@ -4,10 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.control.PasswordField;
+import javafx.scene.control.*;
+
 import java.sql.PreparedStatement;
 import org.mindrot.jbcrypt.BCrypt;
 import javafx.stage.Stage;
@@ -27,6 +25,10 @@ public class HelloController {
     }
 
     @FXML
+    private Hyperlink creerCompte;
+    @FXML
+    private Button cancelButton;
+    @FXML
     private TextField usernameTextField;
     @FXML
     private PasswordField passwordPasswordField;
@@ -42,8 +44,6 @@ public class HelloController {
         }
     }
 
-    @FXML
-    private Button cancelButton;
 
     public void cancelButtonOnAction(ActionEvent e) {
         Stage stage = (Stage) cancelButton.getScene().getWindow();
@@ -77,6 +77,12 @@ public class HelloController {
         }
     }
 
+    public void redirectToRegister(ActionEvent event) {
+        Stage stage = (Stage) creerCompte.getScene().getWindow();
+        stage.close();
+        // Appel de la methode qui gère le chargement du FXML
+        createAccountForm();
+    }
     public void validateLogin(){
         String username = usernameTextField.getText();
 
@@ -86,7 +92,7 @@ public class HelloController {
 
         // Requête préparée pour la SÉCURITÉ : on récupère seulement le hachage du mot de passe
         // et on vérifie que l'utilisateur existe.
-        String verifyLogin = "SELECT passwordHash FROM users WHERE username = ?";
+        String verifyLogin = "SELECT passwordHash, role FROM users WHERE username = ?";
 
         // String verifyLogin = "SELECT count(1) FROM users WHERE username = '" + usernameTextField.getText() + "' AND passwordHashed = '" + passwordPasswordField.getText() + "'";
 
@@ -101,7 +107,7 @@ public class HelloController {
                 if (queryResult.next()) {
                     // L'utilisateur existe, récupérons le hash stocké
                     String storedHashedPassword = queryResult.getString("passwordHash");
-                    int userRole = queryResult.getInt("Role"); // Récupération du rôle
+                    int userRole = queryResult.getInt("role"); // Récupération du rôle
 
                     // 3. Vérification du mot de passe avec BCrypt
                     // BCrypt.checkpw(MOT_DE_PASSE_EN_CLAIR, HACHAGE_STOCKÉ)
@@ -139,7 +145,7 @@ public class HelloController {
     public void createAccountForm(){
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Register.fxml"));
-            Scene scene = new Scene(fxmlLoader.load(), 619, 570);
+            Scene scene = new Scene(fxmlLoader.load(), 619, 595);
             Stage registerStage = new Stage();
             registerStage.initStyle(StageStyle.UNDECORATED);
             registerStage.setScene(scene);
