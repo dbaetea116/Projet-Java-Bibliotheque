@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane prefHeight="400.0" prefWidth="750.0"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="controller.MembresController">
+
+    <center>
+        <TableView fx:id="tableMembres">
+            <columns>
+                <TableColumn fx:id="colNom" text="Nom" prefWidth="150"/>
+                <TableColumn fx:id="colEmail" text="Email" prefWidth="200"/>
+                <TableColumn fx:id="colTel" text="Téléphone" prefWidth="120"/>
+            </columns>
+        </TableView>
+    </center>
+
+    <right>
+        <VBox spacing="10" alignment="TOP_CENTER" prefWidth="230">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <Label text="Gestion des membres" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+            <Separator/>
+
+            <TextField fx:id="tfNom" promptText="Nom" maxWidth="Infinity"/>
+            <TextField fx:id="tfEmail" promptText="Email" maxWidth="Infinity"/>
+            <TextField fx:id="tfTelephone" promptText="Téléphone" maxWidth="Infinity"/>
+
+            <Separator/>
+
+            <Button text="Ajouter" onAction="#ajouterMembre" maxWidth="Infinity"
+                    style="-fx-background-color: #4CAF50; -fx-text-fill: white;"/>
+            <Button text="Modifier" onAction="#modifierMembre" maxWidth="Infinity"
+                    style="-fx-background-color: #FF9800; -fx-text-fill: white;"/>
+            <Button text="Supprimer" onAction="#supprimerMembre" maxWidth="Infinity"
+                    style="-fx-background-color: #F44336; -fx-text-fill: white;"/>
+        </VBox>
+    </right>
+
+</BorderPane>

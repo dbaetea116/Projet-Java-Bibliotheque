@@ -1,0 +1,10 @@
+<AnchorPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="controller.DashboardController">
+
+    <children>
+        <Button text="Livres" layoutX="50" layoutY="50" prefWidth="150" onAction="#goLivres"/>
+        <Button text="Membres" layoutX="50" layoutY="110" prefWidth="150" onAction="#goMembres"/>
+        <Button text="Emprunts" layoutX="50" layoutY="170" prefWidth="150" onAction="#goEmprunts"/>
+        <Button text="Déconnexion" layoutX="50" layoutY="230" prefWidth="150" onAction="#logout"/>
+    </children>
+</AnchorPane>
