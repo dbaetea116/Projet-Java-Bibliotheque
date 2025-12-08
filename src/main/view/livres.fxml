@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="400.0" prefWidth="711.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LivresController">
+
+    <center>
+        <TableView fx:id="tableLivres" prefHeight="400.0" prefWidth="491.0">
+            <columns>
+                <TableColumn fx:id="colTitre" prefWidth="150" text="Titre" />
+                <TableColumn fx:id="colAuteur" prefWidth="150" text="Auteur" />
+                <TableColumn fx:id="colStock" prefWidth="100" text="Stock" />
+            </columns>
+        </TableView>
+    </center>
+
+    <right>
+        <VBox alignment="TOP_CENTER" prefWidth="250" spacing="10">
+            <padding>
+                <Insets bottom="20" left="20" right="20" top="20" />
+            </padding>
+
+            <TextField fx:id="tfTitre" maxWidth="Infinity" promptText="Titre" />
+            <TextField fx:id="tfAuteur" maxWidth="Infinity" promptText="Auteur" />
+            <TextField fx:id="tfAnnee" maxWidth="Infinity" promptText="Année" />
+            <TextField fx:id="tfCategorie" maxWidth="Infinity" promptText="Catégorie" />
+            <TextField fx:id="tfStock" maxWidth="Infinity" promptText="Stock" />
+
+            <Separator />
+
+            <HBox alignment="CENTER" spacing="10">
+                <Button onAction="#ajouterLivre" prefWidth="70" text="Ajouter" />
+                <Button onAction="#modifierLivre" prefWidth="70" text="Modifier" />
+            </HBox>
+
+            <Button maxWidth="Infinity" onAction="#supprimerLivre" text="Supprimer" />
+        </VBox>
+    </right>
+
+</BorderPane>

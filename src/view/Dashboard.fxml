@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane style="-fx-background-color: #fff;" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DashboardController">
+
+    <!-- HEADER -->
+    <top>
+        <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-padding: 20;" text="Dashboard - Bibliothèque" BorderPane.alignment="CENTER" />
+    </top>
+
+    <!-- CONTENU CENTRAL -->
+    <center>
+        <VBox alignment="CENTER" prefHeight="310.0" prefWidth="667.0" spacing="20">
+            <Button fx:id="btnUsers" onAction="#openUsers" prefHeight="40" prefWidth="200" text="Utilisateurs" />
+
+            <Button fx:id="btnBooks" onAction="#openBooks" prefHeight="40" prefWidth="200" text="Livres" />
+
+            <Button fx:id="btnLoans" onAction="#openLoans" prefHeight="40" prefWidth="200" text="Emprunts" />
+        </VBox>
+    </center>
+
+</BorderPane>
