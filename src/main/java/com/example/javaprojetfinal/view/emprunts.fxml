@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane prefHeight="400.0" prefWidth="900.0"
+            xmlns="http://javafx.com/javafx/17"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.javaprojetfinal.Controller.EmpruntsController">
+
+    <center>
+        <TableView fx:id="tableEmprunts">
+            <columns>
+                <TableColumn fx:id="colLivre" text="ID Livre" prefWidth="120"/>
+                <TableColumn fx:id="colMembre" text="ID Membre" prefWidth="120"/>
+                <TableColumn fx:id="colDate" text="Date Emprunt" prefWidth="120"/>
+                <TableColumn fx:id="colRetour" text="Retour Prévu" prefWidth="120"/>
+                <TableColumn fx:id="colRetourReel" text="Retour Réel" prefWidth="120"/>
+            </columns>
+        </TableView>
+    </center>
+
+    <right>
+        <VBox spacing="10" alignment="TOP_CENTER">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+
+            <TextField fx:id="tfIdLivre" promptText="ID Livre" prefWidth="200"/>
+            <TextField fx:id="tfIdMembre" promptText="ID Membre" prefWidth="200"/>
+
+            <Button text="Emprunter" onAction="#emprunterLivre" maxWidth="Infinity"/>
+            <Button text="Retourner" onAction="#retournerLivre" maxWidth="Infinity"/>
+        </VBox>
+    </right>
+
+</BorderPane>
