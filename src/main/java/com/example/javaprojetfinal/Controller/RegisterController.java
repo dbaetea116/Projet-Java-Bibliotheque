@@ -63,7 +63,7 @@ public class RegisterController {
             Stage currentStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             currentStage.close();
             // Charger la page de connexion (login.fxml)
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("login.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/javaprojetfinal/view/login.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 600, 438);
             // Créer une nouvelle fenêtre pour le login
             Stage loginStage = new Stage();

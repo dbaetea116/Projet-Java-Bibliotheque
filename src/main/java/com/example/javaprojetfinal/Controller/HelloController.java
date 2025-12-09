@@ -59,7 +59,7 @@ public class HelloController {
             loginStage.close();
 
             // Charger le fichier FXML du Dashboard
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Dashboard.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/javaprojetfinal/view/dashboard.fxml"));
             Scene scene = new Scene(fxmlLoader.load()); // Laissez JavaFX déterminer la taille
 
             // Créer la nouvelle Stage pour le Dashboard
@@ -126,7 +126,8 @@ public class HelloController {
                             openDashboard(userRole);
                         }
                         loginMessageLabel.setText("Connexion réussie !");
-                        createAccountForm(); // Redirection vers l'application principale
+                        //createAccountForm(); // Redirection vers l'application principale
+                        //openDashboard(userRole);
                     } else {
                         // Ce message couvre l'échec du mot de passe
                         loginMessageLabel.setText("Your password or username is incorrect!.");
@@ -146,7 +147,7 @@ public class HelloController {
 
     public void createAccountForm(){
         try {
-            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("Register.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/com/example/javaprojetfinal/view/Register.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 619, 595);
             Stage registerStage = new Stage();
             registerStage.initStyle(StageStyle.UNDECORATED);
